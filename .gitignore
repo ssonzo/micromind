@@ -1,0 +1,17 @@
+# venv
+venv
+
+# local
+tmp
+temp
+local
+
+# cache
+__pycache__
+cache
+.idea
+.vscode
+.DS_Store
+.coverage
+.mypy_cache
+.pytest_cache

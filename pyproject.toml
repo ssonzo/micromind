@@ -1,0 +1,86 @@
+[tool.poetry]
+name = "micromind"
+version = "0.1.0"
+description = "The micromind is an agent with micro mind capabilities."
+authors = ["Sonzo Public <sonzo.public@gmail.com>"]
+license = "CC0 1.0 Universal"
+
+
+[tool.poetry.dependencies]
+python = "3.9.7"
+click = "8.1.2"
+pygame = "2.1.2"
+pydantic = "1.9.0"
+"ruamel.yaml" = "0.16.13"
+
+
+[tool.poetry.dev-dependencies]
+python-dotenv = "0.19.2"
+mypy = "0.942"
+isort = "5.10.1"
+black = "22.3.0"
+pylint = "2.12.2"
+autoflake = "1.4.0"
+time-machine = "2.7.1"
+pytest = "6.2.5"
+pytest-cov = "2.12.1"
+pytest-asyncio = "0.18.1"
+
+
+[tool.mypy]
+strict_optional = true
+check_untyped_defs = true
+no_implicit_optional = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+
+# Note:
+#   added "black" profile to align isort and black formatting
+
+[tool.isort]
+profile = "black"
+force_grid_wrap = 2
+multi_line_output = 3
+
+
+[tool.black]
+target-version = ["py39"]
+line-length = 80
+
+
+[tool.pylint."BASIC"]
+good-names = ["dt", "td", "fp"]
+
+
+[tool.pylint."SIMILARITIES"]
+ignore-imports = "yes"
+ignore-comments = "yes"
+ignore-docstrings = "yes"
+min-similarity-lines = 8
+
+
+[tool.pylint."MESSAGES CONTROL"]
+output-format = "colorized"
+max-line-length = 80
+disable = [
+    "C0114",  # missing-module-docstring
+    "R0903",  # too-few-public-methods
+    "W1203",  # logging-fstring-interpolation
+]
+
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+
+
+[tool.pytest.ini_options]
+markers = ["slow"]
+asyncio_mode = "strict"
+filterwarnings = "ignore::DeprecationWarning"
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

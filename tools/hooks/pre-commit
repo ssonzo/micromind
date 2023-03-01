@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Pre-commit hook.
+
+
+bash tools/format.sh || exit 1
+bash tools/lint.sh || exit 1
+
+exit 0

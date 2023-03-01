@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Pre-push hook.
+
+
+bash tools/validate-branch-name.sh || exit 1
+bash tools/test.sh || exit 1
+
+exit 0
